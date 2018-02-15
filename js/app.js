@@ -1,6 +1,5 @@
 'use strict';
-import '../style/clock.scss';
-console.log('clocks');
+import '../style/main.scss';
 
 
 
@@ -52,7 +51,7 @@ class Clock {
 
 
     const cityName = document.createElement('div');
-    clock.appendChild(cityName).innerText = this.city.toUpperCase();
+    clock.appendChild(cityName).innerText = this.city.replace(/-/g, ' ').toUpperCase();
     cityName.className = 'city-name';
   }
 
@@ -78,16 +77,20 @@ class Clock {
     // 1h = 30deg
 
     const hrs = now.getHours();
-    // console.log(hrs);
     const hrsDeg = ((hrs / 12) * 360) + ((mins / 60) * 30) + 90 + this.deg  ; // + 0.5 each minute
-    // console.log('GET HRS ' + hrsDeg + " " + this.city);
     hourHand.style.transform = `rotate(${hrsDeg}deg)`;
 
     // avoiding hands from rotating back to starting position when 90deg is reached
     (secDeg === 90) ? secHand.style.transition = '0s' : secHand.style.transition = '0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44)';
     (minDeg === 90) ? minHand.style.transition = '0s' : minHand.style.transition = '0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44)';
 
-    // // need to make one loop for all hands and put bellow to seperate function
+
+
+
+
+    // need to make one loop for all hands and put bellow to seperate function
+    // doesn't work properly at the moment - hour hand glitches
+
     // const secShadow = document.querySelectorAll('.second-hand');
     // const minShadow = document.querySelectorAll('.min-hand');
     // const hrsShadow = document.querySelectorAll('.hour-hand');
@@ -142,12 +145,12 @@ class Clock {
   }
 }
 
-const London = new Clock(-180, 'london');
+const London = new Clock(-180, 'new-york');
 London.createClock();
-//
+
 const Warsaw = new Clock(0, 'warsaw');
 Warsaw.createClock();
-//
+
 const Moscow = new Clock(60, 'moscow');
 Moscow.createClock();
 

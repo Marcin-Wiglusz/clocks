@@ -1,0 +1,121 @@
+body {
+  background-color: #f9f9f9;
+}
+
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .clock-container {
+    margin-top: 6.250em;
+    padding: 0.625em;
+
+    .clock {
+
+      width: 20.000em;
+      height: 20.000em;
+      background-color: #000;
+      border-radius: 100%;
+      position: relative;
+      @include clockGrad;
+      @include clockShadow
+
+
+
+      .clock-face {
+        width: 84%;
+        height: 84%;
+        background-color: #fff;
+        z-index: 10;
+        border-radius: 100%;
+        left: 8%;
+        top: 8%;
+        position: relative;
+        @include faceGrad;
+        @include faceShadow;
+
+        .face-cover {
+          position: relative;
+          z-index: 100;
+          width: 90%;
+          height: 90%;
+          background-color: #fff;
+          border-radius: 100%;
+          top: 5%;
+          left: 5%;
+          @include faceGrad;
+        }
+
+        .marker {
+          height: 2.5%;
+          width: 100%;
+          background-color: #000;
+          position: absolute;
+          top: 48.8%;
+        }
+
+        .pin {
+          position: relative;
+          width: 7%;
+          height: 7%;
+          background-color: #000;
+          border-radius: 100%;
+          bottom: 43.6%;
+          left: 46.6%;
+          z-index : 1000;
+        }
+
+        .hand {
+          background-color: #000;
+          position: absolute;
+          border-bottom-left-radius: 3.125em;
+          border-top-left-radius: 3.125em;
+          transform-origin: 100%; //turns around far right point (default is 50% turns around the middle)
+          z-index : 1000;
+        }
+
+        // .bottom-shadow {
+        // }
+        //
+        // .upper-shadow {
+        // }
+
+        .hour-hand {
+          top: 47.9%;
+          left: 16%;
+          height: 0.625em;
+          width: 34%;
+          // transform: 0s;
+        }
+
+        .min-hand {
+          top: 48.7%;
+          left: 10%;
+          height: 2.5%;
+          width: 40%;
+        }
+
+        .second-hand {
+          top: 49.6%;
+          left: 6.2%;
+          height: 0.125em;
+          width: 44%;
+        }
+      }
+
+      .city-name {
+        background-color: #e8e8e8;
+        width: 50%;
+        margin: 4.167em auto 0;
+        font-size: 1.5em;
+        font-family: sans-serif;
+        color: #414142;
+        text-align: center;
+        padding: 0.500em 0  ;
+        @include cityShadow;
+        // @include cityGrad;
+      }
+    }
+  }
+}
